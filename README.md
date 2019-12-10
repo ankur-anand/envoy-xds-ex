@@ -8,17 +8,13 @@ referred to as xDS.
 
 The xds API is a communication protocol defined by Envoy for data interaction between the control plane and the data plane.
 
-Concept	Full name	description
-LDS	Listener Discovery Service	
-RDS	Route Discovery Service	
-CDS	Cluster Discovery Service	
-EDS	Endpoint Discovery Service	
-SDS	Service Discovery Service	Renamed EDS
-ADS	Aggregated Discovery Service	
-HDS	Health Discovery Service	
-SDS	Secret Discovery Service	
-MS	Metric Service	
-RLS	Rate Limit Service	
+The following are the parts of Envoy’s runtime model we can configure dynamically through xDS:
+
+Listeners Discovery Service API - LDS to publish ports on which to listen for traffic
+Endpoints Discovery Service API- EDS for service discovery,
+Routes Discovery Service API- RDS for traffic routing decisions
+Clusters Discovery Service- CDS for backend services to which we can route traffic
+Secrets Discovery Service - SDS for distributing secrets (certificates and keys)
 xDS		The collective name of the above APIs
 
 https://github.com/envoyproxy/data-plane-api/blob/master/API_OVERVIEW.md
