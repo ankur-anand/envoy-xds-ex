@@ -77,7 +77,9 @@ func MakeNewCluster(cluster core2.Cluster) *apiV2.
 		CircuitBreakers: &apiCluster.CircuitBreakers{
 			Thresholds: []*apiCluster.
 				CircuitBreakers_Thresholds{{MaxRetries: &wrappers.
-				UInt32Value{Value: cluster.Retries}}},
+				UInt32Value{Value: cluster.Retries},
+				MaxConnections: &wrappers.UInt32Value{Value: getMaxConnection(cluster.
+					MaxConnection)}}},
 		},
 	}
 }
@@ -91,4 +93,12 @@ func newAddress(address string, port uint32) *core.Address {
 			PortSpecifier: &core.SocketAddress_PortValue{PortValue: port}},
 		}}
 	return addr
+}
+
+// getMaxConnection
+func getMaxConnection(connection uint32) uint32 {
+	if connection <= 0 {
+		return 1024
+	}
+	return connection
 }
