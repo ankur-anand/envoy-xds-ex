@@ -31,7 +31,7 @@ var upstreams = map[string][]struct {
 	Port    uint32
 }{
 	// address
-	"random_payload_cluster1": {{"127.0.0.1", 3001}, {"127.0.0.1", 3002}},
+	"random_payload": {{"127.0.0.1", 3001}, {"127.0.0.1", 3002}},
 }
 
 // Returns a snapshot. The structure is the same as the Protocol Buffer definition.
