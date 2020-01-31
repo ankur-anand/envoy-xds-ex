@@ -70,6 +70,7 @@ func defaultSnapshot() cache.Snapshot {
 func run(listen string) error {
 	// If the result of xDS is set as a cache, it will be nicely returned as xDS API.
 	snapshotCache := cache.NewSnapshotCache(false, hash{}, nil)
+	// callback function that will be called when processing envoy requests
 	server := xds.NewServer(context.Background(), snapshotCache, nil)
 	//Remember the hash value returned by NodeHash and the snapshot of its settings as a cache
 	err := snapshotCache.SetSnapshot("cluster.local/node0", defaultSnapshot())
